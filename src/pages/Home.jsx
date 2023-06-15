@@ -16,14 +16,15 @@ const Home = () => {
           <p className="text-2xl font-medium text-slate-600">Hub for Educational Videos</p>
         </div>
       </div>
-      <section className="w-3/4 m-auto">
+      <section className="w-3/4 m-auto inline-flex flex-col">
         {isLogin && (
-          <div className="my-10">
-            <NavLink to="/createpost">Create new content</NavLink>
+          <div className="my-10 flex justify-center">
+            <NavLink to="/createpost" className="border rounded-md p-2 hover:bg-orange-200">
+              Create new content
+            </NavLink>
           </div>
         )}
-
-        <div className="flex flex-wrap justify-start mt-10 gap-8">
+        <div className="grid gap-4 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
           {posts &&
             posts.map((post) => {
               return <GetPost key={posts.id} post={post} />

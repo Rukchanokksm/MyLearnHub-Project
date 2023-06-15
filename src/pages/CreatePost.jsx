@@ -26,8 +26,7 @@ const CreatePost = () => {
           rating: rating,
         }),
       })
-      const data = await inputData.json()
-      console.log(data)
+      // const data = await inputData.json()
     } catch (err) {
       console.log(err)
     }
@@ -44,8 +43,9 @@ const CreatePost = () => {
             setNewUrl(e.target.value)
           }}
           className="border-2"
+          required
         />
-        <label>Commnet :</label>
+        <label>Comment :</label>
         <input
           type="text"
           value={newComment}
@@ -53,6 +53,7 @@ const CreatePost = () => {
             setNewComment(e.target.value)
           }}
           className="border-2 h-20"
+          required
         />
         {/* <label>Rating</label>
         <input
