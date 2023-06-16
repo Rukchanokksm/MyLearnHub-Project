@@ -12,9 +12,12 @@ const Login = () => {
     e.preventDefault()
     try {
       await login(userIdInput, PasswordIdInput)
+      alert("Login Success !!!")
+
       navigate("/profile")
     } catch (err) {
       console.log(err)
+      alert("Wrong Password !!!")
     }
   }
 
@@ -38,7 +41,11 @@ const Login = () => {
           }}
           className="border-2"
         />
-        <input type="submit" value="Login" className="border-2 cursor-pointer p-2 hover:bg-red-400" />
+        <input
+          type="submit"
+          value="Login"
+          className="border-2 cursor-pointer p-2 hover:bg-neutral-800 hover:text-yellow-400"
+        />
       </form>
     </div>
   )

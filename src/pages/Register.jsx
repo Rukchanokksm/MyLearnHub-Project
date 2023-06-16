@@ -20,8 +20,10 @@ const Register = () => {
           password: newPassword,
         }),
       })
+      alert("Register Done !!!")
     } catch (err) {
       console.log(err)
+      alert("Somting Wrong !!!")
     }
   }
 

@@ -26,6 +26,7 @@ const CreatePost = () => {
           rating: rating,
         }),
       })
+      alert("Post Done !!!")
       // const data = await inputData.json()
     } catch (err) {
       console.log(err)

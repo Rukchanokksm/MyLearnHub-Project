@@ -9,19 +9,26 @@ import PostDetail from "./pages/PostDetail"
 import Profile from "./pages/Profile"
 import Register from "./pages/Register"
 import EditPost from "./pages/EditPost"
+import { useAuth } from "./providers/AuthProviders"
+import GuardedRoute from "./guards/GuardedRoute"
 
 function App() {
+  const { isLogin } = useAuth()
   return (
     <div className="App">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/createpost" element={<CreatePost />} />
+        <Route element={<GuardedRoute isRouteAccessible={isLogin} redirectRoute="/" />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/createpost" element={<CreatePost />} />
+          <Route path="/Editpost/:id" element={<EditPost />} />
+        </Route>
         <Route path="/Login" element={<Login />} />
         <Route path="/post/:id" element={<PostDetail />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/Editpost/:id" element={<EditPost />} />
+        <Route element={<GuardedRoute isRouteAccessible={!isLogin} redirectRoute="/" />}>
+          <Route path="/register" element={<Register />} />
+        </Route>
       </Routes>
     </div>
   )

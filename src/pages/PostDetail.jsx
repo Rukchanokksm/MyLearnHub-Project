@@ -4,17 +4,27 @@ import { NavLink, useParams } from "react-router-dom"
 import ReactPlayer from "react-player"
 import { FaStar } from "react-icons/fa"
 import Comma from "../img/inverted-commas.png"
+import ReactLoading from "react-loading"
 
 const userId = localStorage.getItem("user")
 const PostDetail = () => {
   const { id } = useParams()
-  const { post } = usePost(id)
+  const { post, isLoading } = usePost(id)
+
+  if (isLoading)
+    return (
+      <>
+        <div className="flex justify-center sticky top-0 w-1/2 mt-32 m-auto">
+          <ReactLoading type="spokes" color="rgb(253 224 71)" height={100} width={100} />
+        </div>
+      </>
+    )
   return (
     <div className="w-1/2 m-auto mt-20">
       {post && (
         <>
-          <div className="flex flex-col gap-5 justify-center px-10 py-5 mb-10 bg-orange-200 border rounded-lg">
-            <div className="flex flex-col gap-3 justify-center items-center">
+          <div className="flex flex-col gap-5 justify-center px-10 py-5 mb-10 border rounded-lg">
+            <div className="flex flex-col gap-3 justify-center items-center ">
               <p className="text-2xl font-bold">{post.videoTitle}</p>
               <p className="text-xl font-bold">{post.creatorUrl}</p>
             </div>
@@ -30,7 +40,7 @@ const PostDetail = () => {
                 <p>Post By {post.postedBy.name}</p>
                 <div className="flex flex-row-reverse w-5 self-end ">
                   {Array.from(Array(post.rating)).map((e, i) => (
-                    <div key={i} className="text-orange-500">
+                    <div key={i} className="text-yellow-400">
                       <FaStar size={20} />
                     </div>
                   ))}
