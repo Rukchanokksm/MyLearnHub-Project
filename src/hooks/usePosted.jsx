@@ -8,7 +8,8 @@ const usePosted = (id) => {
     const fetchData = async () => {
       setIsLoading(true)
       try {
-        const res = await fetch(`https://api.learnhub.thanayut.in.th/content/${id}`)
+        // const res = await fetch(`https://api.learnhub.thanayut.in.th/content/${id}`)
+        const res = await fetch(`http://localhost:8000/content/${id}`)
         const data = await res.json()
         setPost(data)
       } catch (err) {

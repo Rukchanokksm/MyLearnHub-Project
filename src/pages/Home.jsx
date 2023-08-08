@@ -1,5 +1,3 @@
-/* eslint-disable no-const-assign */
-/* eslint-disable react/jsx-no-undef */
 import React, { useEffect, useState } from "react"
 import usePost from "../hooks/usePost"
 import GetPost from "../components/GetPost"
@@ -19,20 +17,17 @@ const Home = () => {
   const [onFilter, setOnFilter] = useState(false)
   const [toTalPosts, setTotalPosts] = useState(posts)
 
-  // Filter item
-
-  const myPost =
-    posts &&
-    posts.filter((dataPoost) => {
-      return dataPoost.postedBy.name === showUser.name
-    })
-  //button filter
+  //Filter item
+  // button filter
   const handleMyFilter = (e) => {
     e.preventDefault()
+    const filtered = posts.filter((dataPoost) => {
+      return dataPoost.postedBy.name === showUser.name
+    })
     setOnFilter(!onFilter)
-    onFilter ? setTotalPosts(myPost) : setTotalPosts(posts)
+    onFilter ? setTotalPosts(filtered) : setTotalPosts(posts)
   }
-  console.log(toTalPosts, onFilter)
+  console.log(posts)
 
   const [itemOffset, setItemOffset] = useState(0)
   const [currentItems, setCurrentItems] = useState([])
