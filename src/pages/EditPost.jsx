@@ -18,7 +18,7 @@ const EditPost = () => {
     e.preventDefault()
 
     try {
-      await fetch(`https://api.learnhub.thanayut.in.th/content/${id}`, {
+      await fetch(`http://localhost:8000/content/update/${id}`, {
         method: "PATCH",
         headers: {
           accept: "application/json",
@@ -31,20 +31,12 @@ const EditPost = () => {
         }),
       })
       alert("Edit Done !!!")
+      navigator(`/post/${id}`)
     } catch (err) {
       console.log(err)
     }
   }
 
-  //   const handlePopup = () => {
-  //     return (
-  //       <div className="z-10">
-  //         <div>
-  //           <p>Hello</p>
-  //         </div>
-  //       </div>
-  //     )
-  //   }
   if (isLoading)
     return (
       <>

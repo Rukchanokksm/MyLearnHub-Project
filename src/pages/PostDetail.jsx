@@ -5,6 +5,7 @@ import ReactPlayer from "react-player"
 import { FaStar } from "react-icons/fa"
 import Comma from "../img/inverted-commas.png"
 import ReactLoading from "react-loading"
+import deleteContent from "../hooks/DeleteContent"
 
 const userId = localStorage.getItem("user")
 const PostDetail = () => {
@@ -46,15 +47,25 @@ const PostDetail = () => {
                   ))}
                 </div>
               </div>
-              {post.postedBy.username === userId ? (
-                <>
-                  <NavLink to={`/editpost/${id}`}>
-                    <button className="border rounded-lg m-3 p-2 bg-stone-400 hover:bg-stone-300">Edit</button>
-                  </NavLink>
-                </>
-              ) : (
-                <div></div>
-              )}
+              <div className="flex">
+                {post.postedBy.username === userId ? (
+                  <>
+                    <NavLink to={`/editpost/${id}`}>
+                      <button className="border rounded-lg m-3 p-2 bg-stone-400 hover:bg-stone-300">Edit</button>
+                    </NavLink>
+                    <NavLink to="/">
+                      <button
+                        className="border rounded-lg m-3 p-2 bg-stone-400 hover:bg-stone-300"
+                        onClick={() => deleteContent(id)}
+                      >
+                        delete
+                      </button>
+                    </NavLink>
+                  </>
+                ) : (
+                  <div></div>
+                )}
+              </div>
             </div>
           </div>
         </>

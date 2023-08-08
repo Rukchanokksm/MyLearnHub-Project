@@ -27,7 +27,6 @@ const Home = () => {
     setOnFilter(!onFilter)
     onFilter ? setTotalPosts(filtered) : setTotalPosts(posts)
   }
-  console.log(posts)
 
   const [itemOffset, setItemOffset] = useState(0)
   const [currentItems, setCurrentItems] = useState([])
