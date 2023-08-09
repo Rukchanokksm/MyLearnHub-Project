@@ -16,9 +16,10 @@ const Home = () => {
 
   const [onFilter, setOnFilter] = useState(false)
   const [toTalPosts, setTotalPosts] = useState(posts)
+  useEffect(() => {
+    setTotalPosts(posts)
+  }, [posts])
 
-  //Filter item
-  // button filter
   const handleMyFilter = (e) => {
     e.preventDefault()
     const filtered = posts.filter((dataPoost) => {
@@ -27,15 +28,13 @@ const Home = () => {
     setOnFilter(!onFilter)
     onFilter ? setTotalPosts(filtered) : setTotalPosts(posts)
   }
-
   const [itemOffset, setItemOffset] = useState(0)
   const [currentItems, setCurrentItems] = useState([])
-  const itemsPerPage = 16
+  const itemsPerPage = 8
   const pageCount = Math.ceil(toTalPosts && toTalPosts.length / itemsPerPage)
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage
-
     setCurrentItems(toTalPosts && toTalPosts.slice(itemOffset, endOffset))
   }, [itemOffset, itemsPerPage, toTalPosts && toTalPosts])
 
@@ -44,7 +43,7 @@ const Home = () => {
 
     setItemOffset(newOffset)
   }
-  if (isLoading)
+  if (isLoading || !posts)
     return (
       <>
         <div className="flex justify-center sticky top-0 w-1/2 mt-32 m-auto">

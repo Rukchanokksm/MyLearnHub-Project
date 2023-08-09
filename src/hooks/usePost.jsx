@@ -9,7 +9,6 @@ const usePost = () => {
     const fetchData = async () => {
       setIsLoading(true)
       try {
-        // const res = await fetch("https://api.learnhub.thanayut.in.th/content")
         const res = await fetch(contentPath)
         const data = await res.json()
         setPosts(data.data)
