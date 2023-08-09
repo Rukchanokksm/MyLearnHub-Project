@@ -4,10 +4,15 @@ import { NavLink } from "react-router-dom";
 import LogoNav from "../img/graduate-cap.png";
 import { useAuth } from "../providers/AuthProviders";
 import useUser from "../hooks/useUser";
+import { useEffect, useState } from "react";
 
 const NavBar = () => {
     const { isLogin, logout } = useAuth();
     const { showUser } = useUser();
+    const [isUser, setIsUser] = useState(showUser);
+    useEffect(() => {
+        setIsUser(showUser);
+    }, [showUser]);
     return (
         <div className="bg-neutral-800">
             <div className="flex justify-between w-4/5 m-auto py-5 items-center">
@@ -21,9 +26,11 @@ const NavBar = () => {
                 {isLogin ? (
                     <>
                         <div className="flex gap-5 text-lg">
+                            {isUser && 
                             <p className="p-1 text-yellow-400">
-                                Wellcome, {showUser.name}
+                                Wellcome, {isUser.name}
                             </p>
+                            }
                             <NavLink to="/">
                                 <button
                                     onClick={logout}

@@ -18,9 +18,11 @@ const AuthProviders = (props) => {
 
     const login = async (username, password) => {
         const loggininfo = { username, password };
+        if(!username || !password){
+            return alert('Please fill username or password')
+        }
         try {
             const res = await fetch(
-                // "https://api.learnhub.thanayut.in.th/auth/login",
                 loginPath,
                 {
                     method: "POST",
@@ -31,6 +33,9 @@ const AuthProviders = (props) => {
             const data = await res.json();
             if (data.statusCode === 401) {
                 throw new Error(data.message);
+            }
+            if (data.statusCode === 402) {
+                throw new Error(data.message)
             }
             localStorage.setItem("token", data.accessToken);
             localStorage.setItem("user", username);
