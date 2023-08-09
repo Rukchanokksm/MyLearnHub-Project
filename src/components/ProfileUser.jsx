@@ -1,5 +1,6 @@
 import React from "react"
 import useUser from "../hooks/useUser"
+import { Link } from "react-router-dom"
 
 const Profile = () => {
   const { showUser } = useUser()
@@ -16,7 +17,9 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex justify-center m-2">
-          <button className="border rounded p-2 hover:bg-yellow-300">change name</button>
+          <Link to="/editprofile">
+            <button className="border rounded p-2 hover:bg-yellow-300">change name</button>
+          </Link>
         </div>
       </div>
     </div>

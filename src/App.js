@@ -11,6 +11,7 @@ import Register from "./pages/Register"
 import EditPost from "./pages/EditPost"
 import { useAuth } from "./providers/AuthProviders"
 import GuardedRoute from "./guards/GuardedRoute"
+import EditProfile from "./components/EditProfile"
 
 function App() {
   const { isLogin } = useAuth()
@@ -23,6 +24,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/createpost" element={<CreatePost />} />
           <Route path="/Editpost/:id" element={<EditPost />} />
+          <Route path="/editprofile" element={<EditProfile />} />
         </Route>
         <Route path="/Login" element={<Login />} />
         <Route path="/post/:id" element={<PostDetail />} />
