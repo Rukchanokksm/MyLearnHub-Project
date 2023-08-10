@@ -51,11 +51,13 @@ const PostDetail = () => {
                 {post.postedBy.username === userId ? (
                   <>
                     <NavLink to={`/editpost/${id}`}>
-                      <button className="border rounded-lg m-3 p-2 bg-stone-400 hover:bg-stone-300">Edit</button>
+                      <button className="border rounded text-xs m-3 p-1 bg-neutral-800 text-white hover:bg-yellow-300 hover:text-black">
+                        Edit
+                      </button>
                     </NavLink>
                     <NavLink to="/">
                       <button
-                        className="border rounded-lg m-3 p-2 bg-stone-400 hover:bg-stone-300"
+                        className="border rounded m-3 p-1 text-xs bg-neutral-800 text-white hover:bg-yellow-300 hover:text-black"
                         onClick={() => deleteContent(id)}
                       >
                         delete

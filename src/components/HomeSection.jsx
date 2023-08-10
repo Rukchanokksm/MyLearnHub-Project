@@ -61,13 +61,16 @@ const Home = () => {
         {isLogin && (
           <div className="my-10 flex justify-between items-center gap-5">
             <div>
-              <button onClick={handleMyFilter} className={onFilter ? "p-2 bg-yellow-300" : "p-2 bg-slate-300"}>
+              <button
+                onClick={handleMyFilter}
+                className={`border rounded p-1 text-sx ${onFilter ? "bg-yellow-300" : "bg-slate-200"}`}
+              >
                 My Post
               </button>
             </div>
             <NavLink
               to="/createpost"
-              className="border rounded-md p-2  hover:bg-neutral-800 transition ease-in-out delay-150 bg-gradient-to-br from-yellow-200 to-yellow-500 hover:-translate-y-1 hover:scale-110 duration-300"
+              className="border rounded p-1  hover:bg-neutral-800 transition ease-in-out delay-150 bg-gradient-to-br from-yellow-200 to-yellow-500 hover:-translate-y-1 hover:scale-110 duration-300"
             >
               Create new content
             </NavLink>
